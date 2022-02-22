@@ -1,0 +1,209 @@
+{
+  "42": {
+    "kovan": {
+      "name": "kovan",
+      "chainId": "42",
+      "contracts": {
+        "PoolMetadataRegistry": {
+          "address": "0x1dc5d83230FfEcF241D40aea529fccf1de877c8C",
+          "abi": [
+            {
+              "inputs": [
+                {
+                  "internalType": "contract IVault",
+                  "name": "vault",
+                  "type": "address"
+                }
+              ],
+              "stateMutability": "nonpayable",
+              "type": "constructor"
+            },
+            {
+              "anonymous": false,
+              "inputs": [
+                {
+                  "indexed": false,
+                  "internalType": "uint256",
+                  "name": "id",
+                  "type": "uint256"
+                },
+                {
+                  "indexed": false,
+                  "internalType": "enum PoolMetadataRegistry.MetadataFlag",
+                  "name": "flag",
+                  "type": "uint8"
+                },
+                {
+                  "indexed": false,
+                  "internalType": "string",
+                  "name": "note",
+                  "type": "string"
+                }
+              ],
+              "name": "MetadataFlagged",
+              "type": "event"
+            },
+            {
+              "anonymous": false,
+              "inputs": [
+                {
+                  "indexed": true,
+                  "internalType": "address",
+                  "name": "previousOwner",
+                  "type": "address"
+                },
+                {
+                  "indexed": true,
+                  "internalType": "address",
+                  "name": "newOwner",
+                  "type": "address"
+                }
+              ],
+              "name": "OwnershipTransferred",
+              "type": "event"
+            },
+            {
+              "anonymous": false,
+              "inputs": [
+                {
+                  "indexed": false,
+                  "internalType": "bytes32",
+                  "name": "poolId",
+                  "type": "bytes32"
+                },
+                {
+                  "indexed": false,
+                  "internalType": "enum PoolMetadataRegistry.Topic",
+                  "name": "topic",
+                  "type": "uint8"
+                },
+                {
+                  "indexed": false,
+                  "internalType": "string",
+                  "name": "data",
+                  "type": "string"
+                },
+                {
+                  "indexed": false,
+                  "internalType": "uint256",
+                  "name": "id",
+                  "type": "uint256"
+                },
+                {
+                  "indexed": false,
+                  "internalType": "enum PoolMetadataRegistry.MetadataType",
+                  "name": "metadataType",
+                  "type": "uint8"
+                }
+              ],
+              "name": "PoolMetadataCreated",
+              "type": "event"
+            },
+            {
+              "inputs": [
+                {
+                  "internalType": "bytes32",
+                  "name": "poolId",
+                  "type": "bytes32"
+                },
+                {
+                  "internalType": "enum PoolMetadataRegistry.Topic",
+                  "name": "topic",
+                  "type": "uint8"
+                },
+                {
+                  "internalType": "string",
+                  "name": "data",
+                  "type": "string"
+                }
+              ],
+              "name": "createComment",
+              "outputs": [],
+              "stateMutability": "nonpayable",
+              "type": "function"
+            },
+            {
+              "inputs": [
+                {
+                  "internalType": "bytes32",
+                  "name": "poolId",
+                  "type": "bytes32"
+                },
+                {
+                  "internalType": "enum PoolMetadataRegistry.Topic",
+                  "name": "topic",
+                  "type": "uint8"
+                },
+                {
+                  "internalType": "string",
+                  "name": "data",
+                  "type": "string"
+                }
+              ],
+              "name": "createContent",
+              "outputs": [],
+              "stateMutability": "nonpayable",
+              "type": "function"
+            },
+            {
+              "inputs": [
+                {
+                  "internalType": "uint256",
+                  "name": "metadataId",
+                  "type": "uint256"
+                },
+                {
+                  "internalType": "enum PoolMetadataRegistry.MetadataFlag",
+                  "name": "flag",
+                  "type": "uint8"
+                },
+                {
+                  "internalType": "string",
+                  "name": "note",
+                  "type": "string"
+                }
+              ],
+              "name": "flagMetadata",
+              "outputs": [],
+              "stateMutability": "nonpayable",
+              "type": "function"
+            },
+            {
+              "inputs": [],
+              "name": "owner",
+              "outputs": [
+                {
+                  "internalType": "address",
+                  "name": "",
+                  "type": "address"
+                }
+              ],
+              "stateMutability": "view",
+              "type": "function"
+            },
+            {
+              "inputs": [],
+              "name": "renounceOwnership",
+              "outputs": [],
+              "stateMutability": "nonpayable",
+              "type": "function"
+            },
+            {
+              "inputs": [
+                {
+                  "internalType": "address",
+                  "name": "newOwner",
+                  "type": "address"
+                }
+              ],
+              "name": "transferOwnership",
+              "outputs": [],
+              "stateMutability": "nonpayable",
+              "type": "function"
+            }
+          ]
+        }
+      }
+    }
+  }
+}
