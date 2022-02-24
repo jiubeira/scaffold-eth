@@ -31,6 +31,7 @@ import deployedContracts from "./contracts/hardhat_contracts.json";
 import { Transactor, Web3ModalSetup } from "./helpers";
 import { Home, ExampleUI, Hints, Subgraph } from "./views";
 import { useStaticJsonRPC } from "./hooks";
+import PoolMetadataRegistryUI from "./views/PoolMetadataRegistryUI";
 
 const { ethers } = require("ethers");
 /*
@@ -257,8 +258,8 @@ function App(props) {
         <Menu.Item key="/debug">
           <Link to="/debug">Debug Contracts</Link>
         </Menu.Item>
-        <Menu.Item key="/exampleui">
-          <Link to="/exampleui">ExampleUI</Link>
+        <Menu.Item key="/pool-metadata-registry">
+          <Link to="/pool-metadata-registry">Pool Metadata Registry</Link>
         </Menu.Item>
       </Menu>
 
@@ -284,17 +285,17 @@ function App(props) {
             contractConfig={contractConfig}
           />
         </Route>
-        <Route path="/exampleui">
-          <ExampleUI
+        <Route path="/pool-metadata-registry">
+          <PoolMetadataRegistryUI
             address={address}
             userSigner={userSigner}
             mainnetProvider={mainnetProvider}
             localProvider={localProvider}
-            yourLocalBalance={yourLocalBalance}
-            price={price}
             tx={tx}
             writeContracts={writeContracts}
             readContracts={readContracts}
+            contractName={"PoolMetadataRegistry"}
+            eventName={"PoolMetadataCreated"}
           />
         </Route>
       </Switch>

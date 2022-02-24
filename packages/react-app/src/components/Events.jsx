@@ -1,7 +1,7 @@
-import { List } from "antd";
+import { Button, List } from "antd";
 import { useEventListener } from "eth-hooks/events/useEventListener";
 
-import  Address from "./Address";
+import { MetadataEvent, Topic } from "./MetadataEvent";
 
 /**
   ~ What it does? ~
@@ -20,22 +20,39 @@ import  Address from "./Address";
   />
 **/
 
-export default function Events({ contracts, contractName, eventName, localProvider, mainnetProvider, startBlock }) {
+export let foundPoolIds = [];
+export function fillPoolIds(events) {
+  foundPoolIds = events.map((event) => {
+    return event.args.poolId;
+  });
+}
+
+export default function Events({ contracts, contractName, eventName, localProvider, startBlock, topicFilter, poolIdFilter }) {
   // 📟 Listen for broadcast events
   const events = useEventListener(contracts, contractName, eventName, localProvider, startBlock);
+  fillPoolIds(events);
+
+  let filteredEvents = events.filter((event) => {
+    return Topic[event.args.topic] == topicFilter;
+  });
+
+  if (poolIdFilter != null) {
+    filteredEvents = filteredEvents.filter((event) => {
+      return foundPoolIds[poolIdFilter] == event.args.poolId;
+    });
+  }
 
   return (
     <div style={{ width: 600, margin: "auto", marginTop: 32, paddingBottom: 32 }}>
       <h2>Events:</h2>
       <List
         bordered
-        dataSource={events}
+        dataSource={filteredEvents}
         renderItem={item => {
-          console.log("Item rendering: ", item);
           return (
             <List.Item key={item.blockNumber + "_" + item.args.sender + "_" + item.args.purpose}>
-              <Address address={item.args[0]} ensProvider={mainnetProvider} fontSize={16} blockExplorer="https://kovan.etherscan.io/"/>
-              {item.args[1]}
+              <MetadataEvent txHash={item.transactionHash} fontSize={16} blockExplorer="https://kovan.etherscan.io/"
+                  data={item.args.data} topic={item.args.topic} id={item.args.id}/>
             </List.Item>
           );
         }}
